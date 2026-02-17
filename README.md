@@ -37,3 +37,18 @@ Database:
 
 ## Project Structure
 
+GenQ/
+│
+├── app.py
+├── requirements.txt
+├── users.json
+├── past_papers.json
+├── README.md
+│
+├── templates/
+│ ├── index.html
+│ ├── login.html
+│ └── register.html
+│
+├── static/
+│ └── style.css
