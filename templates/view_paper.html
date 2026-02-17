@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenQ - View Paper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="nav-logo">🎓 GenQ</h2>
+            <div class="nav-right">
+                <a href="{{ url_for('student_dashboard') }}" class="back-btn">← Back</a>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="paper-view-header">
+            <h1>{{ paper.course }}</h1>
+            <div class="paper-meta">
+                <span class="meta-item">🏢 Department: {{ paper.department }}</span>
+                <span class="meta-item">📅 {{ paper.date }}</span>
+                <span class="meta-item">📊 {{ paper.difficulty }}</span>
+                <span class="meta-item">✍️ {{ paper.created_by }}</span>
+            </div>
+        </div>
+
+        <div class="paper-content">
+            <div class="paper-info">
+                <h3>📚 Syllabus Topics:</h3>
+                <p>{{ paper.syllabus }}</p>
+            </div>
+            
+            <div class="paper-questions">
+                <h2>Question Paper</h2>
+                <pre>{{ paper.content }}</pre>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('download_pdf', paper_id=paper.id) }}" class="print-btn">📥 Download PDF</a>
+            <button onclick="window.print()" class="print-btn">🖨️ Print</button>
+            <a href="{{ url_for('student_dashboard') }}" class="back-link-btn">← Back to Papers</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GenQ - Question Paper Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🎓 GenQ - AI Question Paper Generator</h1>
+
+    <form method="POST">
+        <label>Subject Name:</label>
+        <input type="text" name="subject" required>
+
+        <label>Units (Comma Separated):</label>
+        <textarea name="units" required></textarea>
+
+        <label>Difficulty Level:</label>
+        <select name="difficulty">
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+        </select>
+
+        <h3>Exam Pattern</h3>
+
+        <label>2 Mark Questions:</label>
+        <input type="number" name="two_marks" value="5">
+
+        <label>5 Mark Questions:</label>
+        <input type="number" name="five_marks" value="5">
+
+        <label>10 Mark Questions:</label>
+        <input type="number" name="ten_marks" value="2">
+
+        <button type="submit">Generate Question Paper</button>
+    </form>
+
+    {% if output %}
+    <div class="output">
+        <h2>Generated Question Paper</h2>
+        <pre>{{ output }}</pre>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

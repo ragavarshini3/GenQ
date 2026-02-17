@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenQ - Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-box" style="max-width: 500px;">
+            <div class="login-header">
+                <h1>🎓 GenQ</h1>
+                <p>Create Your Account</p>
+            </div>
+            
+            <form method="POST" class="login-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required class="input-field">
+                    <span class="input-icon">👤</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Username" required class="input-field">
+                    <span class="input-icon">🔐</span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password (min 6 chars)" required class="input-field">
+                    <span class="input-icon">🔒</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required class="input-field">
+                    <span class="input-icon">🔒</span>
+                </div>
+
+                <div class="form-group">
+                    <select name="role" required class="input-field">
+                        <option value="">-- Select Role --</option>
+                        <option value="student">Student</option>
+                        <option value="staff">Staff/Faculty</option>
+                    </select>
+                    <span class="input-icon">👨‍💼</span>
+                </div>
+
+                <div class="form-group">
+                    <select name="department" required class="input-field">
+                        <option value="">-- Select Department --</option>
+                        {% for dept_code, dept_info in departments.items() %}
+                            <option value="{{ dept_code }}">{{ dept_info.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <span class="input-icon">🏫</span>
+                </div>
+                
+                {% if error %}
+                <div class="error-message">{{ error }}</div>
+                {% endif %}
+
+                {% if success %}
+                <div class="success-message">{{ success }}</div>
+                <a href="{{ url_for('login') }}" style="text-align: center; color: #00c6ff; text-decoration: none; display: block; margin-top: 10px;">Go to Login</a>
+                {% endif %}
+                
+                <button type="submit" class="login-btn">📝 Register</button>
+            </form>
+            
+            <div class="demo-section">
+                <p>Already have an account?</p>
+                <a href="{{ url_for('login') }}" style="color: #00c6ff; text-decoration: none; text-align: center; display: block; font-weight: bold;">Login Here</a>
+            </div>
+        </div>
+        
+        <div class="login-background">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+        </div>
+    </div>
+</body>
+</html>
+            </form>
+            
+            <div class="demo-section">
+                <p>Already have an account?</p>
+                <a href="{{ url_for('login') }}" style="color: #00c6ff; text-decoration: none; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Login here</a>
+            </div>
+        </div>
+        
+        <div class="login-background">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+        </div>
+    </div>
+</body>
+</html>

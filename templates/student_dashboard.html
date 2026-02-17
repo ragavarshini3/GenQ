@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenQ - Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="nav-logo">🎓 GenQ</h2>
+            <div class="nav-right">
+                <span class="user-info">Welcome, {{ user }}! 👋</span>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>📚 Past Question Papers</h1>
+            <p>Review previous year papers and practice quiz by department and course</p>
+        </div>
+
+        <div class="student-tools-section">
+            <div class="tool-card">
+                <h2>🔎 Filter by Department & Course</h2>
+                <form method="GET" action="{{ url_for('student_dashboard') }}" class="generate-form student-filter-form">
+                    <div class="form-group">
+                        <label for="department">Department:</label>
+                        <select name="department" id="department" required onchange="updateCourses()">
+                            {% for dept_id, dept in departments.items() %}
+                                <option value="{{ dept_id }}" {% if selected_department == dept_id %}selected{% endif %}>{{ dept.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course:</label>
+                        <select name="course" id="course">
+                            <option value="">-- All Courses --</option>
+                            {% for course_name in courses.keys() %}
+                                <option value="{{ course_name }}" {% if selected_course == course_name %}selected{% endif %}>{{ course_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="generate-btn">Apply Filter</button>
+                </form>
+            </div>
+
+            <div class="tool-card">
+                <h2>🧠 Department Course Quiz</h2>
+                {% if active_quiz and active_quiz.questions %}
+                    <div class="quiz-meta">{{ departments[active_quiz.department].name }} • {{ active_quiz.course }}</div>
+                    <form method="POST" action="{{ url_for('submit_student_quiz') }}" class="quiz-form">
+                        {% for item in active_quiz.questions %}
+                            {% set question_index = loop.index0 %}
+                            <div class="quiz-question-card">
+                                <p><strong>Q{{ loop.index }}.</strong> {{ item.question }}</p>
+                                <div class="quiz-options">
+                                    {% for option in item.options %}
+                                        <label class="quiz-option">
+                                            <input type="radio" name="q_{{ question_index }}" value="{{ option }}">
+                                            <span>{{ option }}</span>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="generate-btn">Submit Quiz</button>
+                    </form>
+                {% else %}
+                    <form method="POST" action="{{ url_for('start_student_quiz') }}" class="generate-form student-filter-form">
+                        <input type="hidden" name="department" value="{{ selected_department }}">
+                        <input type="hidden" name="course" value="{{ selected_course }}">
+                        {% if selected_course %}
+                            <p class="quiz-note">Quiz for: <strong>{{ departments[selected_department].name }}</strong> / <strong>{{ selected_course }}</strong></p>
+                            <button type="submit" class="generate-btn">Start Quiz</button>
+                        {% else %}
+                            <p class="quiz-note">Select a course in filter to start quiz.</p>
+                        {% endif %}
+                    </form>
+                {% endif %}
+
+                {% if quiz_result %}
+                    <div class="quiz-result-box">
+                        <h3>✅ Quiz Result</h3>
+                        <p><strong>Score:</strong> {{ quiz_result.score }} / {{ quiz_result.total }}</p>
+                        <p><strong>Course:</strong> {{ quiz_result.course }}</p>
+
+                        <details class="quiz-review" open>
+                            <summary>Review Answers</summary>
+                            <div class="quiz-review-list">
+                                {% for answer in quiz_result.details %}
+                                    <div class="quiz-review-item {% if answer.is_correct %}correct{% else %}wrong{% endif %}">
+                                        <p><strong>Q{{ loop.index }}.</strong> {{ answer.question }}</p>
+                                        <p><strong>Your Answer:</strong> {{ answer.selected }}</p>
+                                        <p><strong>Correct Answer:</strong> {{ answer.correct }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </details>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if papers %}
+            <div class="papers-grid">
+                {% for paper in papers %}
+                    <div class="paper-card">
+                        <div class="paper-card-header">
+                            <h3>{{ paper.course }}</h3>
+                            <span class="difficulty-badge difficulty-{{ paper.difficulty.lower() }}">{{ paper.difficulty }}</span>
+                        </div>
+                        <div class="paper-card-body">
+                            <p><strong>Department:</strong> {{ departments[paper.department].name }}</p>
+                            <p><strong>Date:</strong> {{ paper.date }}</p>
+                            <p><strong>Created by:</strong> {{ paper.created_by }}</p>
+                        </div>
+                        <div class="paper-card-footer">
+                            <a href="{{ url_for('view_paper', paper_id=paper.id) }}" class="view-btn">View Paper</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h2>📭 No Question Papers Yet</h2>
+                <p>No papers found for selected department/course. Try another course filter.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const departmentCourses = JSON.parse('{{ departments | tojson | safe }}');
+
+        function updateCourses() {
+            const departmentSelect = document.getElementById('department');
+            const courseSelect = document.getElementById('course');
+            const selectedDept = departmentSelect.value;
+            const currentCourse = "{{ selected_course }}";
+
+            courseSelect.innerHTML = '<option value="">-- All Courses --</option>';
+
+            if (selectedDept && departmentCourses[selectedDept]) {
+                const courses = departmentCourses[selectedDept].courses;
+                for (const courseName of Object.keys(courses)) {
+                    const option = document.createElement('option');
+                    option.value = courseName;
+                    option.textContent = courseName;
+                    if (courseName === currentCourse) {
+                        option.selected = true;
+                    }
+                    courseSelect.appendChild(option);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCourses);
+    </script>
+</body>
+</html>

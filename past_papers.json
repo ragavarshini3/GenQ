@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "department": "AI&DS",
+    "course": "Big Data Analytics",
+    "syllabus": "Hadoop, Spark, MapReduce, NoSQL Databases, Data Visualization, Stream Processing",
+    "difficulty": "Easy",
+    "date": "2026-02-17 15:01",
+    "content": "Question Paper - Big Data Analytics\nGenerated on: 2026-02-17 15:01\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. What do you understand by Spark?\n\n2. What do you understand by NoSQL Databases?\n\n3. What is Stream Processing? List its key characteristics.\n\n4. Explain the difference between Hadoop and related concepts.\n\n5. Describe the importance of Data Visualization in Big Data Analytics.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. What are the practical applications of Hadoop? Discuss.\n\n2. What are the practical applications of Stream Processing? Discuss.\n\n3. Describe the process of Hadoop with a flowchart.\n\n4. How is MapReduce implemented in modern systems? Explain.\n\n5. What are the practical applications of MapReduce? Discuss.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Describe the complete process/lifecycle of Stream Processing with detailed explanation.\n\n2. Evaluate the impact of Stream Processing on modern technology.\n\n\n\n\u26a0\ufe0f NOTE: This question paper was generated using a local template system.\nReason: API Quota Exceeded\nTo use AI-powered generation:\n1. Upgrade your Google Gemini API to a paid plan\n2. Or wait a few minutes and try again\n3. Visit: https://console.cloud.google.com/",
+    "created_by": "Ms. Smith"
+  },
+  {
+    "id": 2,
+    "department": "AI&DS",
+    "course": "Machine Learning",
+    "syllabus": "Supervised Learning, Unsupervised Learning, Regression, Classification, Clustering, Feature Engineering, Model Selection",
+    "difficulty": "Medium",
+    "date": "2025-11-10 10:30",
+    "content": "PART A (2 Marks)\n1. Define supervised learning.\n2. What is overfitting?\n3. Differentiate regression and classification.\n4. What is feature scaling?\n5. Define cross-validation.\n\nPART B (5 Marks)\n1. Explain KNN algorithm with example.\n2. Discuss bias-variance tradeoff.\n3. Explain decision tree construction steps.\n4. Describe confusion matrix and evaluation metrics.\n5. Explain feature engineering techniques.\n\nPART C (10 Marks)\n1. Explain SVM in detail with kernel functions.\n2. Discuss model selection and hyperparameter tuning methods.",
+    "created_by": "Admin"
+  },
+  {
+    "id": 3,
+    "department": "IT",
+    "course": "Web Development",
+    "syllabus": "HTML, CSS, JavaScript, React, Angular, Node.js, REST APIs, Web Security",
+    "difficulty": "Easy",
+    "date": "2025-08-04 09:45",
+    "content": "PART A (2 Marks)\n1. What is semantic HTML?\n2. Define CSS box model.\n3. What is DOM?\n4. Expand REST.\n5. What is CORS?\n\nPART B (5 Marks)\n1. Explain event bubbling and capturing.\n2. Discuss responsive web design principles.\n3. Explain HTTP methods in REST APIs.\n4. Describe component lifecycle in React.\n5. Explain authentication methods in web apps.\n\nPART C (10 Marks)\n1. Design a secure full-stack web architecture for an e-learning portal.\n2. Compare React and Angular with use cases.",
+    "created_by": "Ms. Smith"
+  },
+  {
+    "id": 4,
+    "department": "CS",
+    "course": "Operating Systems",
+    "syllabus": "Process Management, Memory Management, File Systems, Scheduling, Synchronization",
+    "difficulty": "Hard",
+    "date": "2024-12-18 14:20",
+    "content": "PART A (2 Marks)\n1. Define process and thread.\n2. What is context switching?\n3. Define deadlock.\n4. What is virtual memory?\n5. What is critical section?\n\nPART B (5 Marks)\n1. Explain FCFS and Round Robin scheduling.\n2. Discuss paging and segmentation.\n3. Explain producer-consumer problem.\n4. Describe file allocation methods.\n5. Explain synchronization primitives.\n\nPART C (10 Marks)\n1. Analyze deadlock prevention, avoidance and detection techniques.\n2. Explain memory management in modern operating systems with diagrams.",
+    "created_by": "Admin"
+  },
+  {
+    "id": 5,
+    "department": "ECE",
+    "course": "Digital Signal Processing",
+    "syllabus": "Fourier Transform, Filters, Z-Transform, DFT, Signal Analysis, Audio Processing",
+    "difficulty": "Medium",
+    "date": "2025-03-22 11:10",
+    "content": "PART A (2 Marks)\n1. Define discrete-time signal.\n2. What is aliasing?\n3. State sampling theorem.\n4. Define impulse response.\n5. What is DFT?\n\nPART B (5 Marks)\n1. Explain linear convolution and circular convolution.\n2. Discuss properties of Z-transform.\n3. Explain FIR and IIR filters.\n4. Describe applications of Fourier Transform.\n5. Explain windowing techniques.\n\nPART C (10 Marks)\n1. Derive and explain DFT and IDFT equations with properties.\n2. Explain digital filter design methods and their practical applications.",
+    "created_by": "Faculty DSP"
+  },
+  {
+    "id": 6,
+    "department": "AI&DS",
+    "course": "Data Structures and Algorithms",
+    "syllabus": "Arrays, Linked Lists, Trees, Graphs, Sorting, Searching, Dynamic Programming",
+    "difficulty": "Hard",
+    "date": "2026-02-17 19:14",
+    "content": "Question Paper - Data Structures and Algorithms\nGenerated on: 2026-02-17 19:14\n\n============================================================\nSECTION A - 2 Mark Questions (10 questions)\n============================================================\n\n1. What are the main advantages of Searching?\n\n2. Explain the difference between Searching and related concepts.\n\n3. Describe the importance of Trees in Data Structures and Algorithms.\n\n4. Explain the difference between Dynamic Programming and related concepts.\n\n5. Write short notes on Arrays.\n\n6. What is Trees? List its key characteristics.\n\n7. What is Graphs? List its key characteristics.\n\n8. What do you understand by Graphs?\n\n9. Differentiate between Searching and Graphs.\n\n10. What is Sorting? List its key characteristics.\n\n\n============================================================\nSECTION B - 5 Mark Questions (10 questions)\n============================================================\n\n1. Explain Sorting in detail with relevant examples.\n\n2. Explain Graphs in detail with relevant examples.\n\n3. How is Sorting implemented in modern systems? Explain.\n\n4. Compare and contrast Trees and Graphs.\n\n5. What are the practical applications of Dynamic Programming? Discuss.\n\n6. What are the practical applications of Arrays? Discuss.\n\n7. Analyze the advantages and disadvantages of Searching.\n\n8. What are the practical applications of Sorting? Discuss.\n\n9. Compare and contrast Arrays and Graphs.\n\n10. Compare and contrast Trees and Searching.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Create a detailed analysis of Sorting including case studies and examples.\n\n2. Explain the theoretical foundations and practical implementations of Dynamic Programming.\n\n\n\n\u26a0\ufe0f NOTE: This question paper was generated using a local template system.\nReason: API Quota Exceeded\nTo use AI-powered generation:\n1. Upgrade your Google Gemini API to a paid plan\n2. Or wait a few minutes and try again\n3. Visit: https://console.cloud.google.com/",
+    "created_by": "niru",
+    "published": false
+  },
+  {
+    "id": 7,
+    "department": "AI&DS",
+    "course": "Computer Vision",
+    "syllabus": "Image Processing, Object Detection, Image Segmentation, Face Recognition, Convolutional Networks",
+    "difficulty": "Easy",
+    "date": "2026-02-17 19:15",
+    "content": "Question Paper - Computer Vision\nGenerated on: 2026-02-17 19:15\n\n============================================================\nSECTION A - 2 Mark Questions (10 questions)\n============================================================\n\n1. What is Image Segmentation? List its key characteristics.\n\n2. Write short notes on Face Recognition.\n\n3. Describe the importance of Face Recognition in Computer Vision.\n\n4. Explain the difference between Convolutional Networks and related concepts.\n\n5. Write short notes on Convolutional Networks.\n\n6. Describe the importance of Image Processing in Computer Vision.\n\n7. Describe the importance of Convolutional Networks in Computer Vision.\n\n8. What is Image Processing? List its key characteristics.\n\n9. What are the main advantages of Face Recognition?\n\n10. Define and explain the concept of Face Recognition.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Compare and contrast Face Recognition and Image Segmentation.\n\n2. Discuss the principles and applications of Object Detection.\n\n3. What are the practical applications of Image Processing? Discuss.\n\n4. How is Object Detection implemented in modern systems? Explain.\n\n5. What are the practical applications of Image Segmentation? Discuss.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Create a detailed analysis of Image Segmentation including case studies and examples.\n\n2. Analyze and discuss the significance of Face Recognition in detail.\n\n\n\n\u26a0\ufe0f NOTE: This question paper was generated using a local template system.\nReason: API Quota Exceeded\nTo use AI-powered generation:\n1. Upgrade your Google Gemini API to a paid plan\n2. Or wait a few minutes and try again\n3. Visit: https://console.cloud.google.com/",
+    "created_by": "Ms. Smith",
+    "published": false
+  },
+  {
+    "id": 8,
+    "department": "AI&DS",
+    "course": "Computer Vision",
+    "syllabus": "Image Processing, Object Detection, Image Segmentation, Face Recognition, Convolutional Networks",
+    "difficulty": "Easy",
+    "date": "2026-02-17 19:16",
+    "content": "Question Paper - Computer Vision\nGenerated on: 2026-02-17 19:16\n\n============================================================\nSECTION A - 2 Mark Questions (10 questions)\n============================================================\n\n1. Differentiate between Image Segmentation and Face Recognition.\n\n2. Differentiate between Object Detection and Image Processing.\n\n3. What do you understand by Object Detection?\n\n4. What do you understand by Convolutional Networks?\n\n5. Explain the difference between Convolutional Networks and related concepts.\n\n6. What are the main advantages of Image Segmentation?\n\n7. What is Image Segmentation? List its key characteristics.\n\n8. Differentiate between Object Detection and Face Recognition.\n\n9. Write short notes on Face Recognition.\n\n10. Differentiate between Object Detection and Image Processing.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Analyze the advantages and disadvantages of Face Recognition.\n\n2. Explain Face Recognition in detail with relevant examples.\n\n3. Explain the architecture/structure of Image Processing.\n\n4. Discuss the principles and applications of Image Segmentation.\n\n5. Explain the architecture/structure of Image Processing.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Evaluate the impact of Convolutional Networks on modern technology.\n\n2. Create a detailed analysis of Object Detection including case studies and examples.\n\n",
+    "created_by": "Ms. Smith",
+    "published": false
+  },
+  {
+    "id": 9,
+    "department": "AI&DS",
+    "course": "Computer Vision",
+    "syllabus": "Image Processing, Object Detection, Image Segmentation, Face Recognition, Convolutional Networks",
+    "difficulty": "Easy",
+    "date": "2026-02-17 19:19",
+    "content": "Question Paper - Computer Vision\nGenerated on: 2026-02-17 19:19\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. Define and explain the concept of Image Processing.\n\n2. What is Image Segmentation? List its key characteristics.\n\n3. Write short notes on Image Processing.\n\n4. What are the main advantages of Face Recognition?\n\n5. Define and explain the concept of Object Detection.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. How is Image Processing implemented in modern systems? Explain.\n\n2. Discuss the principles and applications of Face Recognition.\n\n3. Explain Convolutional Networks in detail with relevant examples.\n\n4. What are the practical applications of Image Processing? Discuss.\n\n5. How is Face Recognition implemented in modern systems? Explain.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Describe the complete process/lifecycle of Object Detection with detailed explanation.\n\n2. Discuss the challenges and solutions related to Face Recognition.\n\n",
+    "created_by": "niru",
+    "published": true,
+    "published_by": "niru",
+    "published_at": "2026-02-17 19:20"
+  }
+]

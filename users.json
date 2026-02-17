@@ -1,0 +1,30 @@
+{
+  "student1": {
+    "password": "student123",
+    "role": "student",
+    "name": "John Student",
+    "department": "AI&DS"
+  },
+  "staff1": {
+    "password": "staff123",
+    "role": "staff",
+    "name": "Ms. Smith"
+  },
+  "admin": {
+    "password": "admin123",
+    "role": "staff",
+    "name": "Admin"
+  },
+  "23AIB12": {
+    "password": "genq123",
+    "role": "student",
+    "name": "RAGAVARSHINI A",
+    "department": "AI&DS"
+  },
+  "niru@1": {
+    "password": "genq123",
+    "role": "staff",
+    "name": "niru",
+    "department": "AI&DS"
+  }
+}
