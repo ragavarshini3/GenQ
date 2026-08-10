@@ -94,5 +94,64 @@
     "published": true,
     "published_by": "niru",
     "published_at": "2026-02-17 19:20"
+  },
+  {
+    "id": 10,
+    "department": "IT",
+    "course": "Cloud Computing",
+    "syllabus": "AWS, Azure, Google Cloud, Virtualization, Containers, Docker, Kubernetes",
+    "difficulty": "Medium",
+    "date": "2026-02-18 13:21",
+    "content": "Question Paper - Cloud Computing\nGenerated on: 2026-02-18 13:21\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. Describe the importance of Virtualization in Cloud Computing.\n\n2. Define and explain the concept of Docker.\n\n3. Define and explain the concept of Containers.\n\n4. What is Kubernetes? List its key characteristics.\n\n5. Write short notes on Containers.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Explain the architecture/structure of Virtualization.\n\n2. Analyze the advantages and disadvantages of Containers.\n\n3. Analyze the advantages and disadvantages of Docker.\n\n4. Analyze the advantages and disadvantages of Docker.\n\n5. Explain Virtualization in detail with relevant examples.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Discuss the challenges and solutions related to Google Cloud.\n\n2. Create a detailed analysis of AWS including case studies and examples.\n\n",
+    "created_by": "Ms. Smith",
+    "published": false
+  },
+  {
+    "id": 11,
+    "department": "AI&DS",
+    "course": "Natural Language Processing",
+    "syllabus": "Tokenization, Word Embeddings, Sentiment Analysis, Named Entity Recognition, Machine Translation",
+    "difficulty": "Hard",
+    "date": "2026-02-18 14:21",
+    "content": "Question Paper - Natural Language Processing\nGenerated on: 2026-02-18 14:21\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. Define and explain the concept of Machine Translation.\n\n2. Define and explain the concept of Named Entity Recognition.\n\n3. Explain the difference between Sentiment Analysis and related concepts.\n\n4. Explain the difference between Machine Translation and related concepts.\n\n5. Describe the importance of Named Entity Recognition in Natural Language Processing.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Analyze the advantages and disadvantages of Word Embeddings.\n\n2. Discuss the principles and applications of Word Embeddings.\n\n3. Explain the architecture/structure of Tokenization.\n\n4. Compare and contrast Named Entity Recognition and Machine Translation.\n\n5. Discuss the principles and applications of Named Entity Recognition.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Describe the complete process/lifecycle of Word Embeddings with detailed explanation.\n\n2. Write a comprehensive essay on Sentiment Analysis. Include examples and diagrams where applicable.\n\n",
+    "created_by": "sakthi",
+    "published": false
+  },
+  {
+    "id": 12,
+    "department": "ECE",
+    "course": "VLSI Design",
+    "syllabus": "Logic Design, Circuit Design, Layout, Simulation, Standard Cells, Physical Design",
+    "difficulty": "Easy",
+    "date": "2026-02-18 15:10",
+    "content": "Question Paper - VLSI Design\nGenerated on: 2026-02-18 15:10\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. Differentiate between Physical Design and Logic Design.\n\n2. What is Simulation? List its key characteristics.\n\n3. Describe the importance of Layout in VLSI Design.\n\n4. What do you understand by Layout?\n\n5. Define and explain the concept of Layout.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Compare and contrast Physical Design and Simulation.\n\n2. Analyze the advantages and disadvantages of Circuit Design.\n\n3. Discuss the principles and applications of Circuit Design.\n\n4. Explain Standard Cells in detail with relevant examples.\n\n5. Compare and contrast Logic Design and Standard Cells.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Explain the theoretical foundations and practical implementations of Circuit Design.\n\n2. Explain the theoretical foundations and practical implementations of Simulation.\n\n",
+    "created_by": "Ms. Smith",
+    "published": false
+  },
+  {
+    "id": 13,
+    "department": "AI&DS",
+    "course": "Deep Learning",
+    "syllabus": "Neural Networks, CNNs, RNNs, LSTMs, GANs, Transfer Learning, Activation Functions",
+    "difficulty": "Hard",
+    "date": "2026-02-20 14:41",
+    "content": "Question Paper - Deep Learning\nGenerated on: 2026-02-20 14:41\n\n============================================================\nSECTION A - 2 Mark Questions (5 questions)\n============================================================\n\n1. Explain the difference between LSTMs and related concepts.\n\n2. Differentiate between GANs and Transfer Learning.\n\n3. Write short notes on RNNs.\n\n4. What are the main advantages of LSTMs?\n\n5. Define and explain the concept of Transfer Learning.\n\n\n============================================================\nSECTION B - 5 Mark Questions (7 questions)\n============================================================\n\n1. How is RNNs implemented in modern systems? Explain.\n\n2. Describe the process of GANs with a flowchart.\n\n3. Analyze the advantages and disadvantages of RNNs.\n\n4. Discuss the principles and applications of Neural Networks.\n\n5. Explain the architecture/structure of Transfer Learning.\n\n6. Explain Transfer Learning in detail with relevant examples.\n\n7. Describe the process of LSTMs with a flowchart.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Create a detailed analysis of Transfer Learning including case studies and examples.\n\n2. Compare LSTMs and Transfer Learning with their advantages, disadvantages, and real-world applications.\n\n",
+    "created_by": "Ratna",
+    "published": true,
+    "published_by": "Ratna",
+    "published_at": "2026-02-20 14:41"
+  },
+  {
+    "id": 14,
+    "department": "AI&DS",
+    "course": "Deep Learning",
+    "syllabus": "Neural Networks, CNNs, RNNs, LSTMs, GANs, Transfer Learning, Activation Functions",
+    "difficulty": "Hard",
+    "date": "2026-02-20 14:43",
+    "content": "Question Paper - Deep Learning\nGenerated on: 2026-02-20 14:43\n\n============================================================\nSECTION A - 2 Mark Questions (10 questions)\n============================================================\n\n1. Define and explain the concept of CNNs.\n\n2. What is LSTMs? List its key characteristics.\n\n3. Explain the difference between LSTMs and related concepts.\n\n4. What do you understand by Transfer Learning?\n\n5. Differentiate between CNNs and GANs.\n\n6. What do you understand by GANs?\n\n7. What is GANs? List its key characteristics.\n\n8. Describe the importance of Transfer Learning in Deep Learning.\n\n9. Write short notes on RNNs.\n\n10. Define and explain the concept of Neural Networks.\n\n\n============================================================\nSECTION B - 5 Mark Questions (5 questions)\n============================================================\n\n1. Explain LSTMs in detail with relevant examples.\n\n2. Analyze the advantages and disadvantages of RNNs.\n\n3. What are the practical applications of CNNs? Discuss.\n\n4. Describe the process of CNNs with a flowchart.\n\n5. Compare and contrast CNNs and GANs.\n\n\n============================================================\nSECTION C - 10 Mark Questions (2 questions)\n============================================================\n\n1. Write a comprehensive essay on LSTMs. Include examples and diagrams where applicable.\n\n2. Compare Activation Functions and LSTMs with their advantages, disadvantages, and real-world applications.\n\n",
+    "created_by": "Ratna",
+    "published": true,
+    "published_by": "Ratna",
+    "published_at": "2026-02-20 14:44"
   }
 ]

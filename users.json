@@ -26,5 +26,29 @@
     "role": "staff",
     "name": "niru",
     "department": "AI&DS"
+  },
+  "varshini1": {
+    "password": "genq123!",
+    "role": "staff",
+    "name": "varshini",
+    "department": "IT"
+  },
+  "sakthi_1": {
+    "password": "123456",
+    "role": "staff",
+    "name": "sakthi",
+    "department": "AI&DS"
+  },
+  "ratna123": {
+    "password": "genq123",
+    "role": "staff",
+    "name": "Ratna",
+    "department": "AI&DS"
+  },
+  "student2": {
+    "password": "sakthi123",
+    "role": "student",
+    "name": "sakthi",
+    "department": "IT"
   }
 }
