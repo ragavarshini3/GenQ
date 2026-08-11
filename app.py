@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, send_file
 import os
 from dotenv import load_dotenv
-from google import genai
 import json
 from datetime import datetime
 import time
@@ -44,6 +43,7 @@ client = None
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
     try:
+        from google import genai
         client = genai.Client(api_key=api_key)
         models = [m.name for m in client.models.list()]
         with open("available_models.txt", "w") as f:
@@ -763,7 +763,7 @@ Format the response clearly with sections A, B, and C."""
     has_error = False
     try:
         if not client:
-            raise Exception("Gemini API key is not configured. Please check your .env file.")
+            raise Exception("Gemini client is not initialized. Verify that your GEMINI_API_KEY environment variable is set and 'google-genai' is installed.")
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt
