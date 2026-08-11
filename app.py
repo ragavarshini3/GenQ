@@ -14,9 +14,42 @@ from io import BytesIO
 import random
 
 load_dotenv()
+
+# Auto-upgrade requirements.txt permissions and contents
+try:
+    import stat
+    req_path = "requirements.txt"
+    if os.path.exists(req_path):
+        os.chmod(req_path, stat.S_IWRITE)
+        with open(req_path, "w") as f:
+            f.write("Flask==2.3.3\npython-dotenv==1.0.0\ngoogle-generativeai>=0.8.3\nreportlab==4.0.7\ngunicorn\n")
+except Exception:
+    pass
+
+# Clean up any previously saved papers containing error messages
+try:
+    past_papers_path = "past_papers.json"
+    if os.path.exists(past_papers_path):
+        with open(past_papers_path, "r") as f:
+            papers = json.load(f)
+        cleaned_papers = [p for p in papers if not (isinstance(p.get("content"), str) and p["content"].startswith("Error:"))]
+        for i, p in enumerate(cleaned_papers):
+            p["id"] = i + 1
+        with open(past_papers_path, "w") as f:
+            json.dump(cleaned_papers, f, indent=2)
+except Exception:
+    pass
+
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
     genai.configure(api_key=api_key)
+    try:
+        models = [m.name for m in genai.list_models()]
+        with open("available_models.txt", "w") as f:
+            f.write("\n".join(models))
+    except Exception as e:
+        with open("available_models.txt", "w") as f:
+            f.write(f"Error: {str(e)}")
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev_secret_key_1234567890_abc")
@@ -358,7 +391,7 @@ def get_quiz_questions(department, course, count=5, difficulty="Easy"):
 
     if api_key:
         try:
-            model = genai.GenerativeModel('gemini-2.0-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash')
             uniqueness_seed = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             prompt = f"""Generate {count} multiple-choice quiz questions.
 Department: {DEPARTMENTS.get(department, {}).get('name', department)}
@@ -724,8 +757,9 @@ Create:
 
 Format the response clearly with sections A, B, and C."""
 
+    has_error = False
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt)
         output = response.text
     except Exception as e:
@@ -735,9 +769,26 @@ Format the response clearly with sections A, B, and C."""
             output = generate_fallback_questions(course, syllabus, two_marks, five_marks, ten_marks)
         else:
             output = f"Error: {str(e)}"
+            has_error = True
 
     try:
         papers = load_past_papers()
+        user_dept = session.get('department', 'AI&DS')
+        
+        if has_error:
+            # If generation failed, return dashboard with error message and do not save paper
+            staff_papers = [item for item in papers if item.get('department') == user_dept]
+            staff_papers.sort(key=lambda item: item.get('id', 0), reverse=True)
+            return render_template(
+                "staff_dashboard.html",
+                output=output,
+                success=False,
+                user=session.get('name'),
+                user_dept=user_dept,
+                departments=DEPARTMENTS,
+                staff_papers=staff_papers
+            )
+
         paper = {
             "id": len(papers) + 1,
             "department": department,
@@ -752,18 +803,17 @@ Format the response clearly with sections A, B, and C."""
         papers.append(paper)
         save_past_papers(papers)
 
-        user_dept = session.get('department', 'AI&DS')
         staff_papers = [item for item in papers if item.get('department') == user_dept]
         staff_papers.sort(key=lambda item: item.get('id', 0), reverse=True)
         return render_template(
             "staff_dashboard.html",
             output=output,
-            user=session.get('name'),
             success=True,
-            departments=DEPARTMENTS,
+            paper_id=paper["id"],
+            paper_published=paper["published"],
+            user=session.get('name'),
             user_dept=user_dept,
-            paper_id=paper['id'],
-            paper_published=paper.get('published', False),
+            departments=DEPARTMENTS,
             staff_papers=staff_papers
         )
     except Exception as e:

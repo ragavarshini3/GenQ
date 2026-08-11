@@ -95,8 +95,12 @@
                                 </form>
                             {% endif %}
                         </div>
+                    {% else %}
+                        <div class="error-banner" style="background: rgba(239, 68, 68, 0.15); border-left: 4px solid #ef4444; color: #fca5a5; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold;">
+                            ❌ Generation Failed: The API returned an error. No paper was saved.
+                        </div>
                     {% endif %}
-                    <h2>Generated Question Paper</h2>
+                    <h2>Generated Question Paper / Error log</h2>
                     <div class="output-box">
                         <pre>{{ output }}</pre>
                     </div>
