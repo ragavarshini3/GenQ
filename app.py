@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for, send_file
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 import json
 from datetime import datetime
 import time
@@ -22,7 +22,7 @@ try:
     if os.path.exists(req_path):
         os.chmod(req_path, stat.S_IWRITE)
         with open(req_path, "w") as f:
-            f.write("Flask==2.3.3\npython-dotenv==1.0.0\ngoogle-generativeai>=0.8.3\nreportlab==4.0.7\ngunicorn\n")
+            f.write("Flask==2.3.3\npython-dotenv==1.0.0\ngoogle-genai>=0.1.1\nreportlab==4.0.7\ngunicorn\n")
 except Exception:
     pass
 
@@ -40,11 +40,12 @@ try:
 except Exception:
     pass
 
+client = None
 api_key = os.getenv("GEMINI_API_KEY")
 if api_key:
-    genai.configure(api_key=api_key)
     try:
-        models = [m.name for m in genai.list_models()]
+        client = genai.Client(api_key=api_key)
+        models = [m.name for m in client.models.list()]
         with open("available_models.txt", "w") as f:
             f.write("\n".join(models))
     except Exception as e:
@@ -389,9 +390,8 @@ def get_courses_for_department(department):
 def get_quiz_questions(department, course, count=5, difficulty="Easy"):
     syllabus = DEPARTMENTS.get(department, {}).get("courses", {}).get(course, "")
 
-    if api_key:
+    if client:
         try:
-            model = genai.GenerativeModel('gemini-1.5-flash')
             uniqueness_seed = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             prompt = f"""Generate {count} multiple-choice quiz questions.
 Department: {DEPARTMENTS.get(department, {}).get('name', department)}
@@ -413,7 +413,10 @@ Output format example:
   {{"question": "...", "options": ["A", "B", "C", "D"], "answer": "B"}}
 ]"""
 
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt
+            )
             raw_text = (response.text or "").strip()
 
             if raw_text.startswith("```"):
@@ -759,8 +762,12 @@ Format the response clearly with sections A, B, and C."""
 
     has_error = False
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        response = model.generate_content(prompt)
+        if not client:
+            raise Exception("Gemini API key is not configured. Please check your .env file.")
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=prompt
+        )
         output = response.text
     except Exception as e:
         error_str = str(e)
