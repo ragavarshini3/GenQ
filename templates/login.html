@@ -3,54 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenQ - Login</title>
+    <title>GenQ - AI Question Paper Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="login-body">
-    <div class="login-container">
-        <div class="login-box">
-            <div class="login-header">
-                <h1>🎓 GenQ</h1>
-                <p>AI Question Paper Generator</p>
-            </div>
+    <div class="login-split-container">
+        <!-- Left Side: Branding and Visuals -->
+        <div class="login-brand-side">
+            <div class="login-brand-bg"></div>
             
-            <form method="POST" class="login-form">
-                <div class="form-group">
-                    <input type="text" name="username" placeholder="Username" required class="input-field">
-                    <span class="input-icon">👤</span>
+            <div class="login-brand-content">
+                <!-- Top: Logo -->
+                <div class="brand-top">
+                    <span class="brand-logo-icon">🎓</span>
+                    <span class="brand-logo-text">GenQ</span>
                 </div>
                 
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="Password" required class="input-field">
-                    <span class="input-icon">🔒</span>
+                <!-- Center: Heading & Illustration -->
+                <div class="brand-center">
+                    <h1 class="brand-title">AI-Powered Question Paper Generation</h1>
+                    <p class="brand-subtitle">Empower educators with Gemini-driven syllabus analysis, automated pattern construction, and instant exam compilation.</p>
+                    
+                    <!-- Premium Animated SVG Illustration -->
+                    <svg class="brand-illustration" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <!-- Gradients -->
+                        <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#00f2fe" />
+                          <stop offset="100%" stop-color="#4facfe" />
+                        </linearGradient>
+                        <linearGradient id="neonBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#0072ff" />
+                          <stop offset="100%" stop-color="#00c6ff" />
+                        </linearGradient>
+                        
+                        <!-- Glow Filter -->
+                        <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                          <feGaussianBlur stdDeviation="6" result="blur" />
+                          <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
+                    
+                      <style>
+                        .glow-element { filter: url(#neonGlow); }
+                        .pulse-slow { animation: pulse 4s ease-in-out infinite; transform-origin: center; }
+                        .pulse-fast { animation: pulse 2s ease-in-out infinite; transform-origin: center; }
+                        .float-item { animation: floatGraphic 6s ease-in-out infinite; transform-origin: center; }
+                        .float-reverse { animation: floatGraphic 6s ease-in-out infinite reverse; transform-origin: center; }
+                        .dash-line { stroke-dasharray: 8, 8; animation: dash 30s linear infinite; }
+                        .dash-line-reverse { stroke-dasharray: 6, 6; animation: dash-rev 20s linear infinite; }
+                        
+                        @keyframes pulse {
+                          0%, 100% { transform: scale(1); opacity: 0.7; }
+                          50% { transform: scale(1.1); opacity: 1; }
+                        }
+                        @keyframes floatGraphic {
+                          0%, 100% { transform: translateY(0px) rotate(0deg); }
+                          50% { transform: translateY(-10px) rotate(1deg); }
+                        }
+                        @keyframes dash {
+                          to { stroke-dashoffset: -1000; }
+                        }
+                        @keyframes dash-rev {
+                          to { stroke-dashoffset: 1000; }
+                        }
+                      </style>
+                    
+                      <!-- Connection Lines (Neural Network) -->
+                      <g opacity="0.35">
+                        <line class="dash-line" x1="120" y1="70" x2="250" y2="130" stroke="#00c6ff" stroke-width="1.5" />
+                        <line class="dash-line-reverse" x1="380" y1="70" x2="250" y2="130" stroke="#00c6ff" stroke-width="1.5" />
+                        <line class="dash-line" x1="120" y1="210" x2="250" y2="130" stroke="#00c6ff" stroke-width="1.5" />
+                        <line class="dash-line-reverse" x1="380" y1="210" x2="250" y2="130" stroke="#00c6ff" stroke-width="1.5" />
+                        
+                        <!-- Outer network grid -->
+                        <line x1="120" y1="70" x2="80" y2="140" stroke="#0072ff" stroke-width="1" />
+                        <line x1="120" y1="210" x2="80" y2="140" stroke="#0072ff" stroke-width="1" />
+                        <line x1="380" y1="70" x2="420" y2="140" stroke="#0072ff" stroke-width="1" />
+                        <line x1="380" y1="210" x2="420" y2="140" stroke="#0072ff" stroke-width="1" />
+                        
+                        <line x1="120" y1="70" x2="250" y2="40" stroke="#0072ff" stroke-width="1" />
+                        <line x1="380" y1="70" x2="250" y2="40" stroke="#0072ff" stroke-width="1" />
+                        <line x1="120" y1="210" x2="250" y2="250" stroke="#0072ff" stroke-width="1" />
+                        <line x1="380" y1="210" x2="250" y2="250" stroke="#0072ff" stroke-width="1" />
+                      </g>
+                    
+                      <!-- Network Nodes -->
+                      <g>
+                        <!-- Top Left Node -->
+                        <circle class="pulse-slow" cx="120" cy="70" r="6" fill="#00f2fe" opacity="0.8" />
+                        <circle cx="120" cy="70" r="10" stroke="#00f2fe" stroke-width="1" opacity="0.4" />
+                        <text x="110" y="55" fill="#94a3b8" font-size="10" font-family="sans-serif">DATA</text>
+                        
+                        <!-- Top Right Node -->
+                        <circle class="pulse-fast" cx="380" cy="70" r="5" fill="#00c6ff" />
+                        <circle cx="380" cy="70" r="9" stroke="#00c6ff" stroke-width="1" opacity="0.4" />
+                        <text x="370" y="55" fill="#94a3b8" font-size="10" font-family="sans-serif">MODEL</text>
+                    
+                        <!-- Bottom Left Node -->
+                        <circle class="pulse-fast" cx="120" cy="210" r="5" fill="#0072ff" />
+                        <circle cx="120" cy="210" r="9" stroke="#0072ff" stroke-width="1" opacity="0.4" />
+                        <text x="105" y="230" fill="#94a3b8" font-size="10" font-family="sans-serif">PROMPT</text>
+                    
+                        <!-- Bottom Right Node -->
+                        <circle class="pulse-slow" cx="380" cy="210" r="7" fill="#00c6ff" opacity="0.8" />
+                        <circle cx="380" cy="210" r="12" stroke="#00c6ff" stroke-width="1" opacity="0.4" />
+                        <text x="365" y="230" fill="#94a3b8" font-size="10" font-family="sans-serif">GENERATE</text>
+                    
+                        <!-- Far Left / Right Nodes -->
+                        <circle cx="80" cy="140" r="4" fill="#00c6ff" opacity="0.6" />
+                        <circle cx="420" cy="140" r="4" fill="#00c6ff" opacity="0.6" />
+                        <circle cx="250" cy="40" r="4" fill="#0072ff" opacity="0.6" />
+                        <circle cx="250" cy="250" r="4" fill="#00c6ff" opacity="0.6" />
+                      </g>
+                    
+                      <!-- Central Floating Asset (Holographic Graduation Cap) -->
+                      <g class="float-item glow-element">
+                        <!-- Outer Glow Cap Diamond -->
+                        <polygon points="250,75 360,115 250,155 140,115" fill="url(#neonCyan)" opacity="0.15" />
+                        
+                        <!-- Solid Cap Diamond Border -->
+                        <polygon points="250,80 350,115 250,150 150,115" stroke="url(#neonCyan)" stroke-width="3" fill="#0b1424" fill-opacity="0.85" />
+                        
+                        <!-- Inner design details of Diamond -->
+                        <polygon points="250,92 320,115 250,138 180,115" stroke="url(#neonBlue)" stroke-width="1" fill="none" opacity="0.5" />
+                        
+                        <!-- Cap Base / Skullcap -->
+                        <path d="M190,133 V160 C190,175 210,185 250,185 C290,185 310,175 310,160 V133" stroke="url(#neonBlue)" stroke-width="3" fill="#0b1424" fill-opacity="0.85" />
+                        <path d="M200,160 C200,170 215,176 250,176 C285,176 300,170 300,160" stroke="#00f2fe" stroke-width="1" fill="none" opacity="0.5" />
+                    
+                        <!-- Tassel -->
+                        <path d="M250,115 L170,140 V175" stroke="#00f2fe" stroke-width="2" fill="none" />
+                        <polygon points="166,175 174,175 170,187" fill="#00f2fe" />
+                        
+                        <!-- Small Center Dot -->
+                        <circle cx="250" cy="115" r="4" fill="#ffffff" />
+                      </g>
+                      
+                      <!-- Floating particles -->
+                      <g>
+                        <circle class="float-reverse" cx="200" cy="65" r="2.5" fill="#00f2fe" opacity="0.8" />
+                        <circle class="float-item" cx="300" cy="65" r="2" fill="#00c6ff" opacity="0.6" />
+                        <circle class="float-reverse" cx="170" cy="180" r="2" fill="#0072ff" opacity="0.7" />
+                        <circle class="float-item" cx="330" cy="180" r="3" fill="#00f2fe" opacity="0.5" />
+                      </g>
+                    </svg>
                 </div>
                 
-                {% if error %}
-                <div class="error-message">{{ error }}</div>
-                {% endif %}
+                <!-- Bottom: Features Grid -->
+                <div class="brand-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <div class="feature-text">
+                            <h4>Gemini AI Powered</h4>
+                            <p>Instantly generate standard-compliant assessment papers.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📋</span>
+                        <div class="feature-text">
+                            <h4>Custom Patterns</h4>
+                            <p>Define marks, quantity, difficulty levels, and departments.</p>
+                        </div>
+                    </div>
+                </div>
                 
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-            
-            <div class="demo-section">
-                <p>Demo Credentials:</p>
-                <div class="demo-box">
-                    <strong>Student:</strong> student1 / student123
+                <!-- Footer -->
+                <div class="brand-footer">
+                    &copy; 2026 GenQ Inc. All rights reserved.
                 </div>
-                <div class="demo-box">
-                    <strong>Staff:</strong> staff1 / staff123
-                </div>
-                <p style="margin-top: 15px; border-top: 1px solid rgba(0, 198, 255, 0.2); padding-top: 15px;">
-                    Don't have an account? <a href="{{ url_for('register') }}" style="color: #00c6ff; text-decoration: none; font-weight: bold;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Register here</a>
-                </p>
             </div>
         </div>
         
-        <div class="login-background">
-            <div class="floating-shape shape1"></div>
-            <div class="floating-shape shape2"></div>
-            <div class="floating-shape shape3"></div>
+        <!-- Right Side: Login Form -->
+        <div class="login-form-side">
+            <div class="login-card">
+                <div class="login-card-header">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your credentials to access your dashboard</p>
+                </div>
+                
+                <form method="POST" class="login-form">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="text" name="username" placeholder="Username" required class="input-field" autocomplete="username">
+                            <span class="input-icon">👤</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="password" name="password" placeholder="Password" required class="input-field" autocomplete="current-password">
+                            <span class="input-icon">🔒</span>
+                        </div>
+                    </div>
+                    
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                    
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+                
+                <div class="register-link">
+                    Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+                </div>
+                
+                <!-- Interactive Demo Section -->
+                <div class="demo-section">
+                    <div class="demo-title">Quick Demo Login</div>
+                    <div class="demo-badges">
+                        <div class="demo-badge" data-username="student1" data-password="student123" title="Click to auto-fill">
+                            <span class="demo-role">👨‍🎓 Student Dashboard</span>
+                            <span class="demo-creds">student1</span>
+                        </div>
+                        <div class="demo-badge" data-username="staff1" data-password="staff123" title="Click to auto-fill">
+                            <span class="demo-role">👨‍🏫 Staff Dashboard</span>
+                            <span class="demo-creds">staff1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Quick Auto-Fill JS Script -->
+    <script>
+        document.querySelectorAll('.demo-badge').forEach(badge => {
+            badge.addEventListener('click', () => {
+                const username = badge.getAttribute('data-username');
+                const password = badge.getAttribute('data-password');
+                
+                const uInput = document.querySelector('input[name="username"]');
+                const pInput = document.querySelector('input[name="password"]');
+                
+                if (uInput && pInput) {
+                    uInput.value = username;
+                    pInput.value = password;
+                    
+                    // Add a tiny animation to feedback the fill action
+                    const card = document.querySelector('.login-card');
+                    card.style.borderColor = '#00c6ff';
+                    card.style.boxShadow = '0 0 30px rgba(0, 198, 255, 0.2)';
+                    setTimeout(() => {
+                        card.style.borderColor = '';
+                        card.style.boxShadow = '';
+                    }, 500);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
