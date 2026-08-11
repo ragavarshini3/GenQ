@@ -7,51 +7,68 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="login-body">
-    <div class="login-container">
-        <div class="login-box" style="max-width: 500px;">
-            <div class="login-header">
+    <div class="register-centered-container">
+        <!-- Ambient Glowing Background Elements -->
+        <div class="register-bg-grid"></div>
+        <div class="register-glow-circle glow-circle-1"></div>
+        <div class="register-glow-circle glow-circle-2"></div>
+        
+        <div class="register-card">
+            <div class="register-card-header">
                 <h1>🎓 GenQ</h1>
                 <p>Create Your Account</p>
             </div>
             
             <form method="POST" class="login-form">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name" required class="input-field">
-                    <span class="input-icon">👤</span>
+                    <div class="input-wrapper">
+                        <input type="text" name="name" placeholder="Full Name" required class="input-field">
+                        <span class="input-icon">👤</span>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="username" placeholder="Username" required class="input-field">
-                    <span class="input-icon">🔐</span>
+                    <div class="input-wrapper">
+                        <input type="text" name="username" placeholder="Username" required class="input-field">
+                        <span class="input-icon">🔐</span>
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <input type="password" name="password" placeholder="Password (min 6 chars)" required class="input-field">
-                    <span class="input-icon">🔒</span>
+                    <div class="input-wrapper">
+                        <input type="password" name="password" placeholder="Password (min 6 chars)" required class="input-field">
+                        <span class="input-icon">🔒</span>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" name="confirm_password" placeholder="Confirm Password" required class="input-field">
-                    <span class="input-icon">🔒</span>
+                    <div class="input-wrapper">
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required class="input-field">
+                        <span class="input-icon">🔒</span>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <select name="role" required class="input-field">
-                        <option value="">-- Select Role --</option>
-                        <option value="student">Student</option>
-                        <option value="staff">Staff/Faculty</option>
-                    </select>
-                    <span class="input-icon">👨‍💼</span>
+                    <div class="input-wrapper">
+                        <select name="role" required class="input-field">
+                            <option value="">-- Select Role --</option>
+                            <option value="student">Student</option>
+                            <option value="staff">Staff/Faculty</option>
+                        </select>
+                        <span class="input-icon">👨‍💼</span>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <select name="department" required class="input-field">
-                        <option value="">-- Select Department --</option>
-                        {% for dept_code, dept_info in departments.items() %}
-                            <option value="{{ dept_code }}">{{ dept_info.name }}</option>
-                        {% endfor %}
-                    </select>
-                    <span class="input-icon">🏫</span>
+                    <div class="input-wrapper">
+                        <select name="department" required class="input-field">
+                            <option value="">-- Select Department --</option>
+                            {% for dept_code, dept_info in departments.items() %}
+                                <option value="{{ dept_code }}">{{ dept_info.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="input-icon">🏫</span>
+                    </div>
                 </div>
                 
                 {% if error %}
@@ -67,15 +84,9 @@
             </form>
             
             <div class="demo-section">
-                <p>Already have an account?</p>
-                <a href="{{ url_for('login') }}" style="color: #00c6ff; text-decoration: none; text-align: center; display: block; font-weight: bold;">Login Here</a>
+                <p style="text-align: center; margin-bottom: 10px; color: #94a3b8; font-size: 14px;">Already have an account?</p>
+                <a href="{{ url_for('login') }}" style="color: #00c6ff; text-decoration: none; text-align: center; display: block; font-weight: bold; font-size: 15px; transition: text-shadow 0.2s ease;" onmouseover="this.style.textShadow='0 0 10px rgba(0,198,255,0.4)'" onmouseout="this.style.textShadow='none'">Login Here</a>
             </div>
-        </div>
-        
-        <div class="login-background">
-            <div class="floating-shape shape1"></div>
-            <div class="floating-shape shape2"></div>
-            <div class="floating-shape shape3"></div>
         </div>
     </div>
 </body>
