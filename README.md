@@ -10,7 +10,7 @@ GenQ is a Flask-based AI-powered web application that generates question papers 
 - AI-powered question paper generation using Gemini AI
 - Flask backend integration
 - Stores users and past papers in JSON format
-- Clean and simple user interface
+- Clean and simple user interface 
 - Fast and lightweight system
 - Easy to install and run 
 
