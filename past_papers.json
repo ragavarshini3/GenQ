@@ -153,5 +153,16 @@
     "published": true,
     "published_by": "Ratna",
     "published_at": "2026-02-20 14:44"
+  },
+  {
+    "id": 15,
+    "department": "AI&DS",
+    "course": "Computer Vision",
+    "syllabus": "Image Processing, Object Detection, Image Segmentation, Face Recognition, Convolutional Networks",
+    "difficulty": "Medium",
+    "date": "2026-08-11 20:27",
+    "content": "Error: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "created_by": "Ms. Smith",
+    "published": false
   }
 ]
