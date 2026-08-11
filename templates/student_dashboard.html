@@ -67,9 +67,19 @@
             <div class="tool-card">
                 <h2>🧠 Department Course Quiz</h2>
                 {% if active_quiz and active_quiz.questions %}
-                    <div class="quiz-meta">{{ departments[active_quiz.department].name }} • {{ active_quiz.course }}</div>
+                    <!-- Visual Timer Banner -->
+                    <div class="quiz-timer-container">
+                        <span class="quiz-timer-label">
+                            <span class="quiz-timer-icon">⏳</span> Time Remaining
+                        </span>
+                        <span id="quiz-timer-display" class="quiz-timer-clock">--:--</span>
+                    </div>
+
+                    <div class="quiz-meta">
+                        {{ departments[active_quiz.department].name }} • {{ active_quiz.course }} • {{ active_quiz.difficulty | default('Easy') }}
+                    </div>
                     
-                    <form method="POST" action="{{ url_for('submit_student_quiz') }}" class="quiz-form">
+                    <form id="quiz-form" method="POST" action="{{ url_for('submit_student_quiz') }}" class="quiz-form">
                         {% for item in active_quiz.questions %}
                             {% set question_index = loop.index0 %}
                             <div class="quiz-question-card">
@@ -92,7 +102,26 @@
                         <input type="hidden" name="department" value="{{ selected_department }}">
                         <input type="hidden" name="course" value="{{ selected_course }}">
                         {% if selected_course %}
-                            <p class="quiz-note">Test your understanding! Launch a dynamic quick quiz for: <br><strong>{{ selected_course }}</strong> ({{ departments[selected_department].name }})</p>
+                            <p class="quiz-note">Test your understanding! Choose your options and launch a dynamic quiz for: <br><strong>{{ selected_course }}</strong> ({{ departments[selected_department].name }})</p>
+                            
+                            <div class="form-group">
+                                <label for="quiz_difficulty">Quiz Difficulty</label>
+                                <select name="difficulty" id="quiz_difficulty">
+                                    <option value="Easy">Easy (36s/question)</option>
+                                    <option value="Moderate" selected>Moderate (60s/question)</option>
+                                    <option value="Hard">Hard (120s/question)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quiz_limit">Number of Questions</label>
+                                <select name="limit" id="quiz_limit">
+                                    <option value="5" selected>5 Questions</option>
+                                    <option value="10">10 Questions</option>
+                                    <option value="15">15 Questions</option>
+                                </select>
+                            </div>
+
                             <button type="submit" class="generate-btn">Start Quiz</button>
                         {% else %}
                             <p class="quiz-note">Select a specific course in the filter panel on the left to start a practice quiz.</p>
@@ -207,5 +236,45 @@
 
         document.addEventListener('DOMContentLoaded', updateCourses);
     </script>
+
+    {% if active_quiz %}
+    <!-- Countdown Timer Script -->
+    <script>
+        (function() {
+            let remainingSeconds = parseInt("{{ remaining_seconds | default(0) }}");
+            const timerDisplay = document.getElementById("quiz-timer-display");
+            const quizForm = document.getElementById("quiz-form");
+            
+            if (!timerDisplay || !quizForm) return;
+
+            function updateTimer() {
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "00:00";
+                    timerDisplay.classList.add("pulse-fast");
+                    alert("Time's up! Automatically submitting your answers.");
+                    quizForm.submit();
+                    return;
+                }
+
+                const minutes = Math.floor(remainingSeconds / 60);
+                const seconds = remainingSeconds % 60;
+                timerDisplay.textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (remainingSeconds < 30) {
+                    timerDisplay.classList.add("pulse-fast");
+                } else {
+                    timerDisplay.classList.remove("pulse-fast");
+                }
+
+                remainingSeconds--;
+            }
+
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer();
+        })();
+    </script>
+    {% endif %}
 </body>
 </html>

@@ -50,5 +50,11 @@
     "role": "student",
     "name": "sakthi",
     "department": "IT"
+  },
+  "Varshini": {
+    "password": "123456",
+    "role": "student",
+    "name": "Ragavarshini Alagarsamy",
+    "department": "AI&DS"
   }
 }

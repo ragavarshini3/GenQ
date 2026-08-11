@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import json
 from datetime import datetime
+import time
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
@@ -352,7 +353,7 @@ def get_courses_for_department(department):
     return DEPARTMENTS.get(department, {}).get("courses", {})
 
 
-def get_quiz_questions(department, course, count=5):
+def get_quiz_questions(department, course, count=5, difficulty="Easy"):
     syllabus = DEPARTMENTS.get(department, {}).get("courses", {}).get(course, "")
 
     if api_key:
@@ -363,6 +364,7 @@ def get_quiz_questions(department, course, count=5):
 Department: {DEPARTMENTS.get(department, {}).get('name', department)}
 Course: {course}
 Syllabus Topics: {syllabus}
+Difficulty Level: {difficulty}
 Unique Seed: {uniqueness_seed}
 
 Rules:
@@ -371,6 +373,7 @@ Rules:
 3. options must have exactly 4 distinct strings.
 4. answer must exactly match one of the options.
 5. Keep questions clear and suitable for undergraduate students.
+6. The difficulty of the questions must be strictly '{difficulty}'.
 
 Output format example:
 [
@@ -547,6 +550,12 @@ def student_dashboard():
     active_quiz = session.get('active_quiz')
     quiz_result = session.pop('quiz_result', None)
 
+    remaining_seconds = 0
+    if active_quiz:
+        elapsed = time.time() - active_quiz.get('start_time', time.time())
+        remaining = active_quiz.get('time_limit', 300) - elapsed
+        remaining_seconds = max(0, int(remaining))
+
     return render_template(
         "student_dashboard.html",
         papers=filtered_papers,
@@ -556,7 +565,8 @@ def student_dashboard():
         selected_course=selected_course,
         courses=courses,
         active_quiz=active_quiz,
-        quiz_result=quiz_result
+        quiz_result=quiz_result,
+        remaining_seconds=remaining_seconds
     )
 
 
@@ -567,6 +577,15 @@ def start_student_quiz():
 
     department = request.form.get("department", "").strip()
     course = request.form.get("course", "").strip()
+    difficulty = request.form.get("difficulty", "Easy").strip()
+    limit_str = request.form.get("limit", "5").strip()
+
+    try:
+        limit = int(limit_str)
+        if limit <= 0:
+            limit = 5
+    except ValueError:
+        limit = 5
 
     if department not in DEPARTMENTS:
         return redirect(url_for('student_dashboard'))
@@ -574,10 +593,24 @@ def start_student_quiz():
     if course not in DEPARTMENTS[department]["courses"]:
         return redirect(url_for('student_dashboard', department=department))
 
-    questions = get_quiz_questions(department, course)
+    # Calculate time limit in seconds
+    # Easy: 3 mins for 5 questions (36 seconds per question)
+    # Moderate/Medium: 5 mins for 5 questions (60 seconds per question)
+    # Hard: 10 mins for 5 questions (120 seconds per question)
+    if difficulty == "Easy":
+        time_limit = limit * 36
+    elif difficulty in ["Medium", "Moderate"]:
+        time_limit = limit * 60
+    else: # Hard
+        time_limit = limit * 120
+
+    questions = get_quiz_questions(department, course, count=limit, difficulty=difficulty)
     session['active_quiz'] = {
         "department": department,
         "course": course,
+        "difficulty": difficulty,
+        "time_limit": time_limit,
+        "start_time": time.time(),
         "questions": questions
     }
     session.pop('quiz_result', None)
